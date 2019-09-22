@@ -1,3 +1,9 @@
+
+/**
+|--------------------------------------------------
+| Contact model
+|--------------------------------------------------
+*/
 const fs = require('fs');
 
 const path = require('path');
@@ -15,7 +21,7 @@ function readContacts( cb ){
 }
 
 function writeContacts( data, cb ){
-  fs.writeFile(p, data, cb );
+  fs.writeFile(p, JSON.stringify(data), cb );
 }
 module.exports = class Contact {
   
@@ -26,10 +32,12 @@ module.exports = class Contact {
   }
 
   save( ){
-    row = { id: this.id, date: this.date, freq: this.freq, operator: this.operator, dx: this.dx, rst: this.rst }
     readContacts( ( contacts )=>{
+      const row = { id: contacts.length + 1 , date: this.date, freq: this.freq, operator: this.operator, dx: this.dx, rst: this.rst }
       contacts.push(row);
-      writeContacts( contacts );
+      writeContacts( contacts, ( err )=>{
+        console.log(err);
+      } );
     })
   }
 
