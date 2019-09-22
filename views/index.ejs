@@ -2,10 +2,56 @@
 <html>
   <head>
     <title><%= title %></title>
-    <link rel='stylesheet' href='/stylesheets/style.css' />
+    <%- include('includes/bootstrap.ejs') %>
   </head>
   <body>
-    <h1><%= title %></h1>
-    <p>Welcome to <%= title %></p>
+    <div class="container">
+      <!-- Header / Navigation-->
+      <div class="row">
+        <div class="col">
+          <h1><%= title %></h1>
+        </div>
+      </div>
+      <!-- Main Content -->
+      <div class="row">
+        <div id="contacts" class="col">
+          <table class="table">
+            <thead>
+              <tr>
+                <th> # </th>
+                <th> Date </th>
+                <th> Freq </th>
+                <th> Operator </th>
+                <th> DX </th>
+                <th> RST </th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <form action="/contacts" method="POST">
+                  <td><button type="submit" class="form-control">Add</button></td>
+                  <td><input type="text" name="date" class="form-control"></td>
+                  <td><input type="text" name="freq" class="form-control"></td>
+                  <td><input type="text" name="operator" class="form-control"></td>
+                  <td><input type="text" name="dx" class="form-control"></td>
+                  <td><input type="text" name="rst" class="form-control"></td>
+                </form>
+              </tr>
+              <% contacts.forEach( contact => {%> 
+                <tr>
+                  <td><%= contact.id %></td>
+                  <td><%= contact.date %></td>
+                  <td><%= contact.freq %></td>
+                  <td><%= contact.operator %></td>
+                  <td><%= contact.dx %></td>
+                  <td><%= contact.rst %></td>
+                </tr>  
+              <% }) %>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+    <%- include('includes/bootstrapJS.ejs') %>
   </body>
 </html>

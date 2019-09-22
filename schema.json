@@ -1,8 +1,0 @@
-[
-  { "name": "id" },
-  { "name": "Date" },
-  { "name": "rx RST" },
-  { "name": "tx RST" },
-  { "name": "DE CALL" },
-  { "name": "DX CALL" }
-]
