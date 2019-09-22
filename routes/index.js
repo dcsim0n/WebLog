@@ -1,8 +1,14 @@
+/**
+|--------------------------------------------------
+| Index route files
+|--------------------------------------------------
+*/
+
 const express = require('express');
 const router = express.Router();
-const indexController = require('../controllers/indexController');
+const { indexPage } = require('../controllers/indexController');
 
 /* GET home page. */
-router.get('/', );
+router.get('/', indexPage);
 
 module.exports = router;

@@ -1,10 +1,9 @@
 /**
 |--------------------------------------------------
-| index controller
+| admin Controller
 |--------------------------------------------------
 */
 
-
-exports.indexPage = function(req, res, next) {
+exports.adminPage = function(req, res, next) {
   res.render('index', { title: 'Express' });
 }

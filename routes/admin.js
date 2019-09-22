@@ -1,4 +1,16 @@
-const express = require('express');
-const Router = express.Router();
+/**
+|--------------------------------------------------
+| /admin Routes File
+|--------------------------------------------------
+*/
 
-Router.get('/', )
+const express = require('express');
+const router = express.Router();
+
+const { adminPage } = require('../controllers/adminController');
+
+/* /admin routes */
+
+router.get('/', adminPage );
+
+module.exports = router;
