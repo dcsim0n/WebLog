@@ -1,3 +1,7 @@
+/*
+| Main App entry point
+*/
+
 var createError = require('http-errors');
 var express = require('express');
 var path = require('path');
@@ -39,5 +43,10 @@ app.use(function(err, req, res, next) {
   res.status(err.status || 500);
   res.render('error');
 });
-sequelize.sync();
-app.listen(3000);
+sequelize.sync()
+.then( result => {
+  app.listen(3000);
+})
+.catch( err =>{
+  console.log('Error :', err);
+});
