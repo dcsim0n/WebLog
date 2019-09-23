@@ -3,6 +3,7 @@ var express = require('express');
 var path = require('path');
 var cookieParser = require('cookie-parser');
 var logger = require('morgan');
+var sequelize = require('./util/database');
 
 var indexRouter = require('./routes/index');
 var adminRouter = require('./routes/admin');
@@ -38,5 +39,5 @@ app.use(function(err, req, res, next) {
   res.status(err.status || 500);
   res.render('error');
 });
-
+sequelize.sync();
 app.listen(3000);
