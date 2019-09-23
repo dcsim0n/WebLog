@@ -1,5 +1,5 @@
 # Amateur Radio Web Log
-Web based amateur radio contact log written built with node and express.
+Web based amateur radio contact log built with node and express.
 
 ## ARWL can be run on a raspberry pi
 1. `git clone`
