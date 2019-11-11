@@ -4,6 +4,8 @@
 |--------------------------------------------------
 */
 
+const Setting = require('../models/setting');
+
 exports.adminPage = function(req, res, next) {
-  res.render('index', { title: 'Express' });
+  res.render('admin', { title: 'Express' });
 }
