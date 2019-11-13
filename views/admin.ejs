@@ -32,7 +32,7 @@
                   <form action="/field" method="POST">
                     <td><button type="submit" class="form-control">Add</button></td>
                     <td><input type="text" name="name" class="form-control"></td>
-                    <td><select name="field_type" id="field_type" class="form-control">
+                    <td><select name="fieldTypeId" id="field_type" class="form-control">
                         <% fieldTypes.forEach( type => { %>
                             <option value="<%= type.id %>"><%= type.type.toUpperCase() %></option>
                         <% }); %>
@@ -40,6 +40,13 @@
                     
                   </form>
                 </tr>
+                <% fields.forEach( field => { %>
+                    <tr>
+                        <td><%= field.id %> </td>
+                        <td><%= field.name %></td>
+                        <td><%= field.field_type.type %></td>
+                    </tr>
+                <% }); %>
                 
               </tbody>
             </table>
