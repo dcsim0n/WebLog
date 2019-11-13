@@ -10,11 +10,14 @@ const sequelize = require('../util/database');
 
 const Field = require('./field');
 const Contact = require('./contact');
+const FieldType = require('./field-type')
 
-
-const ContactField = sequelize.define('contactfield',{
+const ContactField = sequelize.define('contact_field',{
   value: { type: Sequelize.STRING }
 })
+
+FieldType.hasMany( Field );
+Field.belongsTo( FieldType );
 
 ContactField.belongsTo( Field );
 ContactField.belongsTo( Contact );

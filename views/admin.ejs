@@ -8,7 +8,44 @@
     <%- include('includes/bootstrap.ejs') %>
 </head>
 <body>
-    
-    <%- include ('includes/bootstrapJS.ejs');
+    <div class="container">
+        <!-- Header / Navigation-->
+        <div class="row">
+          <div class="col">
+            <h1><%= title %></h1>
+          </div>
+        </div>
+        <!-- Main Content -->
+        <div class="row">
+          <div id="fields" class="col">
+            <table class="table">
+              <thead>
+                <tr>
+                  <th> # </th>
+                  <th> Field Name </th>
+                  <th> Type </th>
+                  
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <form action="/field" method="POST">
+                    <td><button type="submit" class="form-control">Add</button></td>
+                    <td><input type="text" name="name" class="form-control"></td>
+                    <td><select name="field_type" id="field_type" class="form-control">
+                        <% fieldTypes.forEach( type => { %>
+                            <option value="<%= type.id %>"><%= type.type.toUpperCase() %></option>
+                        <% }); %>
+                    </select></td>
+                    
+                  </form>
+                </tr>
+                
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+    <%- include('includes/bootstrapJS.ejs'); %>
 </body>
 </html>
