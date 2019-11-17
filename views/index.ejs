@@ -18,12 +18,13 @@
           <table class="table">
             <thead>
               <tr>
-                <th> # </th>
-                <th> Date </th>
-                <th> Freq </th>
-                <th> Operator </th>
-                <th> DX </th>
-                <th> RST </th>
+                <th>ID</th>
+                <th>Date - Time</th>
+                <th>Operator</th>
+                <th>DX Call</th>
+                <% fields.forEach( field => { %>
+                  <th><%= field.name %></th>
+                <% }); %>
               </tr>
             </thead>
             <tbody>
@@ -31,20 +32,21 @@
                 <form action="/contacts" method="POST">
                   <td><button type="submit" class="form-control">Add</button></td>
                   <td><input type="text" name="date" class="form-control"></td>
-                  <td><input type="text" name="freq" class="form-control"></td>
                   <td><input type="text" name="operator" class="form-control"></td>
-                  <td><input type="text" name="dx" class="form-control"></td>
-                  <td><input type="text" name="rst" class="form-control"></td>
+                  <td><input type="text" name="dx_call" class="form-control"></td>
+
+                  <% fields.forEach( field => { %>
+                    <td><input type="text" name="<%= field.name %>" class="form-control" placeholder="<%= field.name %>"></td>
+                    
+                  <% }); %>
+                  
                 </form>
               </tr>
               <% contacts.forEach( contact => {%> 
                 <tr>
-                  <td><%= contact.id %></td>
-                  <td><%= contact.date %></td>
-                  <td><%= contact.freq %></td>
-                  <td><%= contact.operator %></td>
-                  <td><%= contact.dx %></td>
-                  <td><%= contact.rst %></td>
+                  <% contact.contact_fields.forEach( cf => { %>
+                    <td> <%= cf.value %> </td>
+                  <% }); %>
                 </tr>  
               <% }) %>
             </tbody>

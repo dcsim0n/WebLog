@@ -13,6 +13,7 @@ const Contact = sequelize.define('contact', {
   date: { type: Sequelize.STRING },
   operator: { type: Sequelize.STRING },
   dx_call: { type: Sequelize.STRING }
+  
 })
 
 module.exports = Contact;
